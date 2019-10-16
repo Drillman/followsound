@@ -3,11 +3,12 @@
 </ActionBar>
 
 <GridLayout class="page page-content">
-    <!-- <label text="This should be displayed just fine"></label> -->
     <label text="Bluetooth status: {{bluetoothStatus}}"></label>
-    <!-- <ListView [items]="items" class="list-group">
-        <ng-template let-item="item">
-            <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
+</GridLayout>
+<GridLayout class="page page-content">
+    <ListView [items]="bluetoothDevices" class="list-group">
+        <ng-template let-device="item">
+            <Label text="{{device.UUID}}" class="list-group-item"></Label>
         </ng-template>
-    </ListView> -->
+    </ListView>
 </GridLayout>

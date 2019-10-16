@@ -17,7 +17,22 @@ export class BluetoothService {
     );
   }
 
-  getRegisteredDevices(): Promise<any[]> {
-    
+  getRegisteredDevices(): Promise<Bluetooth.Peripheral[]> {
+    let bluetoothDevices: Bluetooth.Peripheral[];
+    return Bluetooth.startScanning({
+      serviceUUIDs: [],
+      seconds: 4,
+      onDiscovered: (peripheral: Bluetooth.Peripheral) => {
+        bluetoothDevices = [ ...bluetoothDevices , peripheral ];
+        console.log("Periperhal found with UUID: " + peripheral.UUID);
+      },
+      skipPermissionCheck: false,
+    }).then(() => {
+      console.log("scanning complete");
+      return Promise.resolve(bluetoothDevices);
+    }).catch(err => {
+      console.error(err);
+      return Promise.reject(err);
+    })
   }
 }

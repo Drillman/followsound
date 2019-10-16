@@ -24,6 +24,10 @@
 }
 
 // Common page class
+.list-group {
+    background-color: $background-light;
+    color: $text-color;
+}
 .page-content {
     .page-placeholder {
         color: $page-icon-color;
